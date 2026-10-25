@@ -13,7 +13,11 @@ import {
   Shield,
   Clock,
   Sparkles,
+  GraduationCap,
+  MapPin,
+  Compass,
 } from 'lucide-react';
+
 import { soundEngine } from '../../utils/audioSynth.ts';
 
 interface HomeScreenProps {
@@ -131,8 +135,73 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         </button>
       </div>
 
+      {/* CGC University Smart Campus Hub Feature Card */}
+      <div className="bg-gradient-to-r from-[#1e1533] via-[#16172d] to-[#12182b] border border-[#3e2c60]/80 rounded-2xl p-4 shadow-xl relative overflow-hidden group">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#7050d8] to-[#ec4899] flex items-center justify-center text-white shadow-md shadow-purple-900/30">
+              <GraduationCap className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="font-heading font-bold text-base text-white">
+                  CGC Smart Campus Hub
+                </h3>
+                <span className="text-[10px] font-mono font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40 px-2 py-0.5 rounded-full">
+                  Jhanjeri, Mohali
+                </span>
+              </div>
+              <p className="text-xs text-slate-400">
+                Timetable, OpenStreetMap Navigator, Notices, TechFest 2026 & Lost Board
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={() => setActiveScreen('smart-campus')}
+            className="text-xs font-bold text-white bg-gradient-to-r from-[#7050d8] to-[#b04fdf] hover:brightness-110 px-3.5 py-2 rounded-xl transition-all shadow-md shadow-purple-900/30 flex items-center justify-center gap-1.5 whitespace-nowrap self-start sm:self-auto"
+          >
+            <span>Enter Campus</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
+        {/* Quick action chips */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-[#29264c]">
+          <button
+            onClick={() => setActiveScreen('smart-campus')}
+            className="p-2 rounded-xl bg-[#111224]/80 hover:bg-[#1a1c38] border border-[#2b294e] text-left transition-colors"
+          >
+            <span className="text-[10px] text-purple-400 font-semibold block">Today's Class</span>
+            <span className="text-xs font-bold text-slate-200 truncate block">4 Scheduled</span>
+          </button>
+          <button
+            onClick={() => setActiveScreen('smart-campus')}
+            className="p-2 rounded-xl bg-[#111224]/80 hover:bg-[#1a1c38] border border-[#2b294e] text-left transition-colors"
+          >
+            <span className="text-[10px] text-pink-400 font-semibold block">Campus Map</span>
+            <span className="text-xs font-bold text-slate-200 truncate block">Blocks 1-3 & Labs</span>
+          </button>
+          <button
+            onClick={() => setActiveScreen('smart-campus')}
+            className="p-2 rounded-xl bg-[#111224]/80 hover:bg-[#1a1c38] border border-[#2b294e] text-left transition-colors"
+          >
+            <span className="text-[10px] text-amber-400 font-semibold block">TechFest 2026</span>
+            <span className="text-xs font-bold text-slate-200 truncate block">RSVP Open</span>
+          </button>
+          <button
+            onClick={() => setActiveScreen('smart-campus')}
+            className="p-2 rounded-xl bg-[#111224]/80 hover:bg-[#1a1c38] border border-[#2b294e] text-left transition-colors"
+          >
+            <span className="text-[10px] text-emerald-400 font-semibold block">Lost & Found</span>
+            <span className="text-xs font-bold text-slate-200 truncate block">Active Board</span>
+          </button>
+        </div>
+      </div>
+
       {/* Grid of Key Hub Status Cards */}
       <div className="grid grid-cols-2 gap-3">
+
         {/* Focus & Streak Card */}
         <div
           onClick={() => setActiveScreen('planner')}

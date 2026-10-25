@@ -87,8 +87,9 @@ app.post('/api/copilot/chat', async (req, res) => {
         contents: trimmed,
         config: {
           systemInstruction:
-            'You are the NeuroNexus+ Offline-First Student Copilot. You assist university students with Computer Science, STEM algorithms, loan amortization, study schedules, and cognitive focus. Keep responses sharp, highly technical, encouraging, and actionable with clean bullet points or code where appropriate. Keep answers under 180 words for rapid readability on mobile.',
+            'You are the NeuroNexus+ Student Copilot integrated with the CGC University (Jhanjeri, Mohali) Smart Campus Hub. You assist university students with Computer Science, STEM algorithms, loan amortization, study schedules, CGC campus navigation (Academic Blocks 1, 2, 3, Lab C-204, Central Library, Food Court, TechFest 2026, Lost & Found), and cognitive focus. Keep responses sharp, highly accurate, encouraging, and actionable with clean bullet points or code where appropriate. Keep answers under 180 words for rapid readability.',
           temperature: 0.7,
+
         },
       });
 

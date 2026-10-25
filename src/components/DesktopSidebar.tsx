@@ -12,6 +12,7 @@ import {
   Radio,
   Settings,
   Sparkles,
+  GraduationCap,
 } from 'lucide-react';
 
 interface DesktopSidebarProps {
@@ -31,6 +32,7 @@ export const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
     badgeDot?: boolean;
   }[] = [
     { id: 'home', label: 'Dashboard Hub', icon: LayoutDashboard },
+    { id: 'smart-campus', label: 'CGC Smart Campus', icon: GraduationCap, badge: 'Mohali' },
     { id: 'wellness', label: 'Wellness & HRV', icon: HeartPulse, badge: '68ms' },
     { id: 'planner', label: 'Study & IoT Control', icon: BookOpen, badgeDot: true },
     { id: 'finance', label: 'Student Finance', icon: CreditCard },

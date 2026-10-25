@@ -20,7 +20,9 @@ import { CareerScreen } from './components/screens/CareerScreen.tsx';
 import { LeaderboardScreen } from './components/screens/LeaderboardScreen.tsx';
 import { CommunityScreen } from './components/screens/CommunityScreen.tsx';
 import { CopilotScreen } from './components/screens/CopilotScreen.tsx';
+import { SmartCampusScreen } from './components/screens/SmartCampusScreen.tsx';
 import { CosmicBackground, BackgroundTheme } from './components/CosmicBackground.tsx';
+
 import { Smartphone, Monitor, Palette } from 'lucide-react';
 
 export default function App() {
@@ -49,6 +51,15 @@ export default function App() {
       prev.map((s) => (s.isCurrentUser ? { ...s, xp: s.xp + amount } : s))
     );
   };
+
+  const handleAddStudyTask = (taskData: Omit<StudyTask, 'id'>) => {
+    const newTask: StudyTask = {
+      id: `task-${Date.now()}`,
+      ...taskData,
+    };
+    setTasks((prev) => [newTask, ...prev]);
+  };
+
 
   const handleDockSendMessage = async (text: string) => {
     setActiveScreen('copilot');
@@ -138,7 +149,16 @@ export default function App() {
             }}
           />
         );
+      case 'smart-campus':
+        return (
+          <SmartCampusScreen
+            setActiveScreen={setActiveScreen}
+            onAddStudyTask={handleAddStudyTask}
+            onEarnXp={handleEarnXp}
+          />
+        );
       default:
+
         return (
           <HomeScreen
             setActiveScreen={setActiveScreen}

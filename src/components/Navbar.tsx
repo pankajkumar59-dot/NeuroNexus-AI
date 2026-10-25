@@ -68,6 +68,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           badge: 'ENCRYPTED',
           badgeColor: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
         };
+      case 'smart-campus':
+        return {
+          title: 'CGC Smart Campus',
+          subtitle: 'Jhanjeri, Mohali • Campus Life Connected',
+          badge: 'CAMPUS ONLINE',
+          badgeColor: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
+        };
       case 'copilot':
         return {
           title: 'NeuroNexus Copilot',
@@ -77,6 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         };
     }
   };
+
 
   const details = getScreenDetails();
 

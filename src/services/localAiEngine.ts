@@ -63,6 +63,84 @@ export function generateLocalAiResponse(rawQuery: string): LocalAiResponse {
     };
   }
 
+  // 2b. CGC Smart Campus Knowledge (University Jhanjeri, Mohali)
+  if (
+    lower.includes('cgc') ||
+    lower.includes('jhanjeri') ||
+    lower.includes('campus') ||
+    lower.includes('techfest') ||
+    lower.includes('block 1') ||
+    lower.includes('block 2') ||
+    lower.includes('block 3') ||
+    lower.includes('c-204') ||
+    lower.includes('timetable') ||
+    lower.includes('notice') ||
+    lower.includes('lost and found') ||
+    lower.includes('lost & found')
+  ) {
+    if (lower.includes('block 2') || lower.includes('c-204') || lower.includes('web dev') || lower.includes('bca')) {
+      return {
+        reply:
+          '**Academic Block 2 & Lab C-204 (CGC Jhanjeri):**\n\n' +
+          '• **Location:** 2nd Floor, Academic Block 2 (Management & Computer Applications wing).\n' +
+          '• **Facility:** Houses the Advanced Web Development Practical Lab, BCA smart lecture rooms, and Startup Incubation Centre.\n' +
+          '• **Scheduled Class:** Web Development Practical is on Monday at 10:30 AM (and rescheduled DSA Lab in Room C-204 on Friday at 11:00 AM).\n' +
+          '• **Walking Route:** 3-minute walk from Main Gate via Central Lawn.',
+        modelUsed: 'CGC Campus Navigator',
+        source: 'CGC Smart Campus Engine',
+      };
+    }
+
+    if (lower.includes('techfest') || lower.includes('event')) {
+      return {
+        reply:
+          '**TechFest 2026: Apex Innovation (CGC University Mohali):**\n\n' +
+          '• **Date:** 29 October 2026\n' +
+          '• **Venues:** Main University Auditorium & Open-Air Amphitheatre.\n' +
+          '• **Key Highlights:** 24-hr Hackathon, Robot Wars, Drone Racing, and Industry Keynotes.\n' +
+          '• **Registration:** Free registrations are currently open at the Student Desk and inside the Smart Campus Events tab.',
+        modelUsed: 'CGC Events Engine',
+        source: 'CGC Smart Campus Engine',
+      };
+    }
+
+    if (lower.includes('timetable') || lower.includes('schedule') || lower.includes('monday') || lower.includes('class')) {
+      return {
+        reply:
+          '**Your CGC Weekly Timetable (BCA Semester 2):**\n\n' +
+          '• **09:00 AM:** Database Systems (Lecture) — Block 1 · Room 104\n' +
+          '• **10:30 AM:** Web Development (Practical) — Block 2 · Lab C-204\n' +
+          '• **01:00 PM:** Discrete Mathematics (Lecture) — Block 1 · Room 112\n' +
+          '• **02:30 PM:** Communication Skills (Lecture) — Block 3 · Room 210\n\n' +
+          '*Tip: You can sync any of these directly to your Focus Pomodoro Planner from the Smart Campus screen.*',
+        modelUsed: 'CGC Timetable Engine',
+        source: 'CGC Smart Campus Engine',
+      };
+    }
+
+    if (lower.includes('lost') || lower.includes('found')) {
+      return {
+        reply:
+          '**CGC Campus Lost & Found Board:**\n\n' +
+          '• **Active Listings:** Lavender earbuds case (near library), Blue steel water bottle (Block 2 / C-204), and Casio fx-991EX calculator.\n' +
+          '• **Reporting:** You can submit lost or found items directly from the Smart Campus > Lost & Found board. No private phone numbers or passwords required.',
+        modelUsed: 'CGC Recovery Network',
+        source: 'CGC Smart Campus Engine',
+      };
+    }
+
+    return {
+      reply:
+        '**CGC University (Jhanjeri, Mohali) Smart Campus Hub:**\n\n' +
+        '• **Coordinates:** 30.68114° N, 76.60584° E\n' +
+        '• **Main Facilities:** Academic Blocks 1, 2, and 3, Central Knowledge Library, Student Food Court & Cafeteria, Residences/Hostels, and 1,200-seat Auditorium.\n' +
+        '• **Student Services:** Access real-time class timetables, interactive OpenStreetMap room navigation, campus notices, and student digital ID cards via the Smart Campus tab.',
+      modelUsed: 'CGC Campus Directory',
+      source: 'CGC Smart Campus Engine',
+    };
+  }
+
+
   // 3. Computer Science: Algorithms & Data Structures
   if (lower.includes('dijkstra') || lower.includes('fibonacci heap')) {
     return {

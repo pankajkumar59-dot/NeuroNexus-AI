@@ -1,11 +1,12 @@
 import React from 'react';
 import { ScreenType } from '../types/index.ts';
-import { Home, HeartPulse, CheckSquare, CreditCard, Users, Bot, Award, Briefcase } from 'lucide-react';
+import { Home, HeartPulse, CheckSquare, CreditCard, Users, Bot, Award, Briefcase, GraduationCap } from 'lucide-react';
 
 interface BottomNavigationProps {
   activeScreen: ScreenType;
   setActiveScreen: (screen: ScreenType) => void;
 }
+
 
 export const BottomNavigation: React.FC<BottomNavigationProps> = ({
   activeScreen,
@@ -13,11 +14,12 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
 }) => {
   const navItems: { id: ScreenType; label: string; icon: React.FC<{ className?: string }> }[] = [
     { id: 'home', label: 'Home', icon: Home },
+    { id: 'smart-campus', label: 'CGC Campus', icon: GraduationCap },
     { id: 'wellness', label: 'Wellness', icon: HeartPulse },
     { id: 'planner', label: 'Planner', icon: CheckSquare },
     { id: 'finance', label: 'Finance', icon: CreditCard },
-    { id: 'community', label: 'Community', icon: Users },
   ];
+
 
   return (
     <nav
@@ -69,6 +71,19 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
           }`}
         >
           <Bot className="w-5 h-5" />
+        </button>
+
+        <button
+          onClick={() => setActiveScreen(activeScreen === 'community' ? 'home' : 'community')}
+          aria-label="Peer Community"
+          title="Peer Community"
+          className={`p-2 rounded-xl transition-colors ${
+            activeScreen === 'community'
+              ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
+              : 'text-[#64748b] hover:text-cyan-400'
+          }`}
+        >
+          <Users className="w-4 h-4" />
         </button>
 
         <button

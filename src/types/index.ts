@@ -6,7 +6,9 @@ export type ScreenType =
   | 'career'
   | 'leaderboard'
   | 'community'
-  | 'copilot';
+  | 'copilot'
+  | 'smart-campus';
+
 
 export interface StudyTask {
   id: string;
