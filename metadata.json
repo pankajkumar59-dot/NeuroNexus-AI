@@ -2,5 +2,7 @@
   "name": "NeuroNexus+",
   "description": "Offline-first AI study copilot, biometrics-driven cognitive wellness tracker, IoT focus lighting, and student financial runway accelerator.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

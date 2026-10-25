@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import path from 'path';
 import { GoogleGenAI } from '@google/genai';
 import { calculateLoanEMI, calculateEarlyPayoff } from './src/utils/neuroMath.ts';
 import { generateLocalAiResponse } from './src/services/localAiEngine.ts';
@@ -7,7 +8,11 @@ import { generateLocalAiResponse } from './src/services/localAiEngine.ts';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+
+// Parse CLI --port if passed by supervisor, else use process.env.PORT or fallback to 3000
+const portArgIndex = process.argv.indexOf('--port');
+const cliPort = portArgIndex !== -1 ? parseInt(process.argv[portArgIndex + 1], 10) : undefined;
+const PORT = cliPort || (process.env.PORT ? parseInt(process.env.PORT, 10) : 3000);
 
 app.use(express.json());
 
@@ -154,9 +159,10 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
-    app.use(express.static('dist'));
+    const distPath = path.resolve('dist');
+    app.use(express.static(distPath));
     app.get('*', (_req, res) => {
-      res.sendFile('dist/index.html', { root: '.' });
+      res.sendFile(path.join(distPath, 'index.html'));
     });
   }
 
